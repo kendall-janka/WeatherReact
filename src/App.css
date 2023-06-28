@@ -1,38 +1,87 @@
 .App {
+  font-family: sans-serif;
+}
+
+.App .weather {
+  max-width: 75%;
+  display: block;
+  margin: 0 auto;
+}
+.App html,
+body {
+  background-color: rgb(242, 241, 241);
+}
+
+.App h1 {
+  text-align: 0 auto;
+  color: black;
+  margin-left: 4px;
+  line-height: 2.5;
+}
+.App #units {
+  font-weight: 600;
+  font-size: large;
+  color: gray;
+  vertical-align: super;
+}
+.App #celsLink {
+  color: rgb(73, 61, 152);
+}
+.App #fahrLink {
+  color: rgb(73, 61, 152);
+}
+
+.App #fahrLink.active {
+  color: black;
+  cursor: default;
+}
+
+.App #fahrLink.active:hover {
+  text-decoration: none;
+}
+
+.App #celsLink.active {
+  color: black;
+  cursor: default;
+}
+
+.App #celsLink.active:hover {
+  text-decoration: none;
+}
+
+.App #searchButton {
+  line-height: 1;
+}
+.App #inputCity {
+  border-radius: 0.25rem;
+  max-width: 100%;
+}
+.App li {
+  list-style: none;
+}
+.App li::first-letter {
+  text-transform: capitalize;
+}
+.App ul {
+  padding: 4px;
+}
+.App .weatherForecast {
+  color: black;
+}
+.App .forecastColumn {
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App #github {
+  color: rgb(73, 61, 152);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App #forecastMaxTemp {
+  font-weight: 500;
+}
+.App #forecastTemps {
+  font-size: 13px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.App #forecastRow {
+  color: black;
 }

@@ -85,3 +85,7 @@ body {
 .App #forecastRow {
   color: black;
 }
+
+footer {
+  margin: 0 auto;
+}

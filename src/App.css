@@ -17,6 +17,7 @@ body {
   color: black;
   margin-left: 4px;
   line-height: 2.5;
+  margin-bottom: 0px;
 }
 .App #units {
   font-weight: 600;
@@ -58,6 +59,7 @@ body {
 }
 .App li {
   list-style: none;
+  margin-top: 0px;
 }
 .App li::first-letter {
   text-transform: capitalize;
@@ -84,8 +86,4 @@ body {
 
 .App #forecastRow {
   color: black;
-}
-
-footer {
-  margin: 0 auto;
 }

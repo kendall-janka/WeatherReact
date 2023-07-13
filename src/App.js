@@ -1,10 +1,12 @@
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import React, { useState } from "react";
+import FormatDate from "./FormatDate";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
+    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.temperature.current),
@@ -13,7 +15,7 @@ export default function App(props) {
       windspeed: Math.round(response.data.wind.speed),
       iconUrl:
         "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
-      time: "Thursday, 10:00 am",
+      date: new Date(response.data.time * 1000),
     });
   }
   if (weatherData.ready) {
@@ -83,8 +85,7 @@ export default function App(props) {
                     <div className="Conditions">
                       <ul>
                         <li>
-                          Last updated:{" "}
-                          <span id="date">{weatherData.time}</span>
+                          <FormatDate date={weatherData.date} />
                           <br></br>
                           <span className="text-capitalize">
                             {weatherData.current}

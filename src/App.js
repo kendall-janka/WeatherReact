@@ -3,16 +3,20 @@ import axios from "axios";
 import React, { useState } from "react";
 
 export default function Currenttemp() {
-  const [ready, setReady] = useState(false);
-  const [weatherData, setWeatherData] = useState({});
+  const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherData({
+      ready: true,
       temperature: Math.round(response.data.temperature.current),
+      current: response.data.condition.description,
+      humidity: response.data.temperature.humidity,
+      windspeed: Math.round(response.data.wind.speed),
+      iconUrl:
+        "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
+      time: "Thursday, 10:00 am",
     });
-
-    setReady(true);
   }
-  if (ready) {
+  if (weatherData.ready) {
     return (
       <div className="Reactcontainer">
         <div className="App">
@@ -61,8 +65,8 @@ export default function Currenttemp() {
                         <h1 className="currentTemp">
                           <img
                             id="currentIcon"
-                            alt="clear"
-                            src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                            alt={weatherData.current}
+                            src={weatherData.iconUrl}
                           ></img>
                           <span id="currentTemperature">
                             {" "}
@@ -79,15 +83,21 @@ export default function Currenttemp() {
                     <div className="Conditions">
                       <ul>
                         <li>
-                          Last updated: <span id="date">12:20 pm</span>
+                          Last updated:{" "}
+                          <span id="date">{weatherData.time}</span>
                           <br></br>
-                          <span id="currentConditions">Partly Cloudy</span>
+                          <span className="text-capitalize">
+                            {weatherData.current}
+                          </span>
                         </li>
                         <li>
-                          Humidity: <span id="humidity"> 55</span>%
+                          Humidity:{" "}
+                          <span id="humidity"> {weatherData.humidity}</span>%
                         </li>
                         <li>
-                          Wind Speed: <span id="windSpeed"> 5 </span> mph
+                          Wind Speed:{" "}
+                          <span id="windSpeed"> {weatherData.windspeed} </span>{" "}
+                          mph
                         </li>
                       </ul>
                     </div>

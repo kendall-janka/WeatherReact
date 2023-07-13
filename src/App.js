@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import React, { useState } from "react";
 
-export default function Currenttemp() {
+export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   function handleResponse(response) {
     setWeatherData({
@@ -58,7 +58,7 @@ export default function Currenttemp() {
                 <div className="card-body text-info">
                   <div className="row">
                     <div className="col-8">
-                      <h1 class="City">New York</h1>
+                      <h1 class="City">{props.defaultcity}</h1>
                     </div>
                     <div className="col-4">
                       <div className="currenttemp">
@@ -118,8 +118,8 @@ export default function Currenttemp() {
     );
   } else {
     const apiKey = "4900o839bet5aaf3e9a5c07fb3d6686a";
-    let city = "New York";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultcity}&key=${apiKey}&units=imperial`;
     axios.get(apiUrl).then(handleResponse);
+    return "Loading...";
   }
 }

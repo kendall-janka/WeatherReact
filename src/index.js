@@ -8,7 +8,7 @@ const root = createRoot(rootElement);
 root.render(
   <div className="container">
     <StrictMode>
-      <App />
+      <App defaultcity="Grand Rapids" />
     </StrictMode>
   </div>
 );

@@ -1,12 +1,13 @@
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import React, { useState } from "react";
-import FormatDate from "./FormatDate";
+
+import Weatherinfo from "./weatherInfo.js";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.defaultcity);
   function handleResponse(response) {
-    console.log(response.data);
     setWeatherData({
       ready: true,
       temperature: Math.round(response.data.temperature.current),
@@ -16,7 +17,23 @@ export default function App(props) {
       iconUrl:
         "http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png",
       date: new Date(response.data.time * 1000),
+      city: response.data.city,
     });
+  }
+  function search() {
+    const apiKey = "4900o839bet5aaf3e9a5c07fb3d6686a";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+    //alert(city);
   }
   if (weatherData.ready) {
     return (
@@ -28,7 +45,7 @@ export default function App(props) {
                 <div className="card-header">
                   <div className="card-header">
                     <div className="Searchbar">
-                      <form id="searchForm">
+                      <form onSubmit={handleSubmit}>
                         <div className="row" max-width="80%">
                           <div class="col-5 col-md-5 col-lg-4">
                             <input
@@ -38,6 +55,7 @@ export default function App(props) {
                               class="search-input"
                               autocomplete="off"
                               input
+                              onChange={handleCityChange}
                             ></input>
                           </div>
                           <div className="col-5 col-md-4 col-lg-2 p-0">
@@ -56,71 +74,24 @@ export default function App(props) {
 
                   <div className="col-2 col-md-3 col-lg-6"></div>
                 </div>
+                <Weatherinfo data={weatherData} />
 
-                <div className="card-body text-info">
-                  <div className="row">
-                    <div className="col-8">
-                      <h1 class="City">{props.defaultcity}</h1>
-                    </div>
-                    <div className="col-4">
-                      <div className="currenttemp">
-                        <h1 className="currentTemp">
-                          <img
-                            id="currentIcon"
-                            alt={weatherData.current}
-                            src={weatherData.iconUrl}
-                          ></img>
-                          <span id="currentTemperature">
-                            {" "}
-                            {weatherData.temperature}{" "}
-                          </span>
-                          <span id="units"> °F </span>
-                        </h1>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="row">
-                  <div className="col-12">
-                    <div className="Conditions">
-                      <ul>
-                        <li>
-                          <FormatDate date={weatherData.date} />
-                          <br></br>
-                          <span className="text-capitalize">
-                            {weatherData.current}
-                          </span>
-                        </li>
-                        <li>
-                          Humidity:{" "}
-                          <span id="humidity"> {weatherData.humidity}</span>%
-                        </li>
-                        <li>
-                          Wind Speed:{" "}
-                          <span id="windSpeed"> {weatherData.windspeed} </span>{" "}
-                          mph
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-                <div id="forecast"></div>
+                <footer>
+                  <center>
+                    Open Source Code by Kendall Janka available on &nbsp;
+                    <a href="https://github.com/kendall-janka/WeatherReact">
+                      GitHub
+                    </a>
+                  </center>
+                </footer>
               </div>
             </div>
           </div>
-          <footer>
-            <center>
-              Open Source Code by Kendall Janka available on &nbsp;
-              <a href="https://github.com/kendall-janka/WeatherReact">GitHub</a>
-            </center>
-          </footer>
         </div>
       </div>
     );
   } else {
-    const apiKey = "4900o839bet5aaf3e9a5c07fb3d6686a";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultcity}&key=${apiKey}&units=imperial`;
-    axios.get(apiUrl).then(handleResponse);
+    search();
     return "Loading...";
   }
 }

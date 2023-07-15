@@ -1,25 +1,26 @@
-.App {
+container {
   font-family: sans-serif;
 }
 
-.App .weather {
+.weather {
   max-width: 75%;
   display: block;
   margin: 0 auto;
 }
-.App html,
+
 body {
   background-color: rgb(242, 241, 241);
 }
 
-.App h1 {
+h1 {
   text-align: 0 auto;
   color: black;
   margin-left: 4px;
   line-height: 2.5;
   margin-bottom: 0px;
+  margin-top: 5px;
 }
-.App #units {
+#units {
   font-weight: 600;
   font-size: large;
   color: gray;
@@ -50,30 +51,30 @@ body {
   text-decoration: none;
 }
 
-.App #searchButton {
+#searchButton {
   line-height: 1;
 }
-.App #inputCity {
+#inputCity {
   border-radius: 0.25rem;
   max-width: 100%;
 }
-.App li {
+li {
   list-style: none;
   margin-top: 0px;
 }
-.App li::first-letter {
+li::first-letter {
   text-transform: capitalize;
 }
-.App ul {
+ul {
   padding: 4px;
 }
-.App .weatherForecast {
+.weatherForecast {
   color: black;
 }
-.App .forecastColumn {
+.forecastColumn {
   text-align: center;
 }
-.App #github {
+#github {
   color: rgb(73, 61, 152);
 }
 

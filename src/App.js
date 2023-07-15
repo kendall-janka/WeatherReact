@@ -75,16 +75,15 @@ export default function App(props) {
                   <div className="col-2 col-md-3 col-lg-6"></div>
                 </div>
                 <Weatherinfo data={weatherData} />
-
-                <footer>
-                  <center>
-                    Open Source Code by Kendall Janka available on &nbsp;
-                    <a href="https://github.com/kendall-janka/WeatherReact">
-                      GitHub
-                    </a>
-                  </center>
-                </footer>
               </div>
+              <footer>
+                <center>
+                  Open Source Code by Kendall Janka available on &nbsp;
+                  <a href="https://github.com/kendall-janka/WeatherReact">
+                    GitHub
+                  </a>
+                </center>
+              </footer>
             </div>
           </div>
         </div>

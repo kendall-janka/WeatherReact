@@ -1,0 +1,20 @@
+.units {
+  font-weight: 600;
+  font-size: large;
+  vertical-align: super;
+}
+.link {
+  color: rgb(73, 61, 152);
+}
+
+link.active {
+  color: black;
+  cursor: default;
+}
+
+link.active:hover {
+  text-decoration: none;
+}
+.currentTemperature {
+  font-color: gray;
+}

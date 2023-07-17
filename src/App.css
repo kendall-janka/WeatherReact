@@ -20,41 +20,12 @@ h1 {
   margin-bottom: 0px;
   margin-top: 5px;
 }
-#units {
-  font-weight: 600;
-  font-size: large;
-  color: gray;
-  vertical-align: super;
-}
-.App #celsLink {
-  color: rgb(73, 61, 152);
-}
-.App #fahrLink {
-  color: rgb(73, 61, 152);
-}
-
-.App #fahrLink.active {
-  color: black;
-  cursor: default;
-}
-
-.App #fahrLink.active:hover {
-  text-decoration: none;
-}
-
-.App #celsLink.active {
-  color: black;
-  cursor: default;
-}
-
-.App #celsLink.active:hover {
-  text-decoration: none;
-}
 
 #searchButton {
+  margin-left: 60px;
   line-height: 1;
 }
-#inputCity {
+.inputCity {
   border-radius: 0.25rem;
   max-width: 100%;
 }
@@ -74,7 +45,7 @@ ul {
 .forecastColumn {
   text-align: center;
 }
-#github {
+.github {
   color: rgb(73, 61, 152);
 }
 

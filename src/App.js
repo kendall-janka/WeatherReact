@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
 import React, { useState } from "react";
 
-import Weatherinfo from "./weatherInfo.js";
+import Weatherinfo from "./WeatherInfo.js";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -44,11 +44,11 @@ export default function App(props) {
                 <div className="card-header">
                   <div className="card-header">
                     <div className="Searchbar">
-                      <form onSubmit={handleSubmit}>
+                      <form id="searchForm" onSubmit={handleSubmit}>
                         <div className="row" max-width="80%">
                           <div class="col-5 col-md-5 col-lg-4">
                             <input
-                              id="inputCity"
+                              className="inputCity"
                               type="search"
                               placeholder="Enter a City"
                               class="search-input"
@@ -60,6 +60,7 @@ export default function App(props) {
                           <div className="col-5 col-md-4 col-lg-2 p-0">
                             <input
                               id="searchButton"
+                              className="searchButton"
                               type="submit"
                               class="btn btn-outline-info w-100"
                               value="Search"
@@ -78,7 +79,10 @@ export default function App(props) {
               <footer>
                 <center>
                   Open Source Code by Kendall Janka available on &nbsp;
-                  <a href="https://github.com/kendall-janka/WeatherReact">
+                  <a
+                    href="https://github.com/kendall-janka/WeatherReact"
+                    className="link"
+                  >
                     GitHub
                   </a>
                 </center>

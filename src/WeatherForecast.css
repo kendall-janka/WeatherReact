@@ -1,0 +1,9 @@
+.forecast {
+  text-align: center;
+}
+.max-temp {
+  font-weight: bold;
+}
+.forecastTemps {
+  color: gray;
+}

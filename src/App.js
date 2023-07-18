@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState } from "react";
 
 import Weatherinfo from "./WeatherInfo.js";
+import WeatherForecast from "./WeatherForecast";
 
 export default function App(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -17,6 +18,7 @@ export default function App(props) {
       iconUrl: `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`,
       date: new Date(response.data.time * 1000),
       city: response.data.city,
+      coordinates: response.data.coordinates,
     });
   }
   function search() {
@@ -75,7 +77,9 @@ export default function App(props) {
                   <div className="col-2 col-md-3 col-lg-6"></div>
                 </div>
                 <Weatherinfo data={weatherData} />
+                <WeatherForecast coordinates={weatherData.coordinates} />
               </div>
+
               <footer>
                 <center>
                   Open Source Code by Kendall Janka available on &nbsp;
